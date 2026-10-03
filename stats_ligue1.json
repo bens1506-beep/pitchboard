@@ -1,0 +1,231 @@
+{
+    "standings": [
+        {
+            "Team": "Monaco",
+            "Matches": 5,
+            "Points": 13,
+            "ButsPour": 8,
+            "ButsContra": 3,
+            "TirsCadres": 23,
+            "Diff": 5
+        },
+        {
+            "Team": "Lyon",
+            "Matches": 5,
+            "Points": 11,
+            "ButsPour": 10,
+            "ButsContra": 2,
+            "TirsCadres": 25,
+            "Diff": 8
+        },
+        {
+            "Team": "Paris FC",
+            "Matches": 5,
+            "Points": 11,
+            "ButsPour": 8,
+            "ButsContra": 3,
+            "TirsCadres": 23,
+            "Diff": 5
+        },
+        {
+            "Team": "Lille",
+            "Matches": 5,
+            "Points": 10,
+            "ButsPour": 8,
+            "ButsContra": 4,
+            "TirsCadres": 32,
+            "Diff": 4
+        },
+        {
+            "Team": "Rennes",
+            "Matches": 5,
+            "Points": 10,
+            "ButsPour": 8,
+            "ButsContra": 9,
+            "TirsCadres": 27,
+            "Diff": -1
+        },
+        {
+            "Team": "Paris SG",
+            "Matches": 5,
+            "Points": 8,
+            "ButsPour": 8,
+            "ButsContra": 7,
+            "TirsCadres": 36,
+            "Diff": 1
+        },
+        {
+            "Team": "Angers",
+            "Matches": 5,
+            "Points": 7,
+            "ButsPour": 6,
+            "ButsContra": 5,
+            "TirsCadres": 15,
+            "Diff": 1
+        },
+        {
+            "Team": "Strasbourg",
+            "Matches": 5,
+            "Points": 7,
+            "ButsPour": 10,
+            "ButsContra": 10,
+            "TirsCadres": 24,
+            "Diff": 0
+        },
+        {
+            "Team": "Le Mans",
+            "Matches": 5,
+            "Points": 6,
+            "ButsPour": 9,
+            "ButsContra": 9,
+            "TirsCadres": 25,
+            "Diff": 0
+        },
+        {
+            "Team": "Auxerre",
+            "Matches": 5,
+            "Points": 6,
+            "ButsPour": 7,
+            "ButsContra": 12,
+            "TirsCadres": 25,
+            "Diff": -5
+        },
+        {
+            "Team": "Brest",
+            "Matches": 5,
+            "Points": 5,
+            "ButsPour": 7,
+            "ButsContra": 8,
+            "TirsCadres": 29,
+            "Diff": -1
+        },
+        {
+            "Team": "Lorient",
+            "Matches": 5,
+            "Points": 5,
+            "ButsPour": 5,
+            "ButsContra": 6,
+            "TirsCadres": 16,
+            "Diff": -1
+        },
+        {
+            "Team": "Toulouse",
+            "Matches": 5,
+            "Points": 5,
+            "ButsPour": 7,
+            "ButsContra": 9,
+            "TirsCadres": 23,
+            "Diff": -2
+        },
+        {
+            "Team": "Nice",
+            "Matches": 5,
+            "Points": 5,
+            "ButsPour": 3,
+            "ButsContra": 6,
+            "TirsCadres": 15,
+            "Diff": -3
+        },
+        {
+            "Team": "Lens",
+            "Matches": 5,
+            "Points": 4,
+            "ButsPour": 9,
+            "ButsContra": 9,
+            "TirsCadres": 32,
+            "Diff": 0
+        },
+        {
+            "Team": "Troyes",
+            "Matches": 5,
+            "Points": 4,
+            "ButsPour": 4,
+            "ButsContra": 11,
+            "TirsCadres": 14,
+            "Diff": -7
+        },
+        {
+            "Team": "Marseille",
+            "Matches": 5,
+            "Points": 3,
+            "ButsPour": 7,
+            "ButsContra": 8,
+            "TirsCadres": 24,
+            "Diff": -1
+        },
+        {
+            "Team": "Le Havre",
+            "Matches": 5,
+            "Points": 2,
+            "ButsPour": 4,
+            "ButsContra": 7,
+            "TirsCadres": 25,
+            "Diff": -3
+        }
+    ],
+    "recent_matches": [
+        {
+            "Date": "18/09/2026",
+            "HomeTeam": "Monaco",
+            "AwayTeam": "Lens",
+            "FTHG": 2,
+            "FTAG": 1
+        },
+        {
+            "Date": "19/09/2026",
+            "HomeTeam": "Paris FC",
+            "AwayTeam": "Strasbourg",
+            "FTHG": 2,
+            "FTAG": 1
+        },
+        {
+            "Date": "19/09/2026",
+            "HomeTeam": "Angers",
+            "AwayTeam": "Troyes",
+            "FTHG": 2,
+            "FTAG": 0
+        },
+        {
+            "Date": "19/09/2026",
+            "HomeTeam": "Le Mans",
+            "AwayTeam": "Lorient",
+            "FTHG": 2,
+            "FTAG": 1
+        },
+        {
+            "Date": "19/09/2026",
+            "HomeTeam": "Lyon",
+            "AwayTeam": "Rennes",
+            "FTHG": 4,
+            "FTAG": 0
+        },
+        {
+            "Date": "19/09/2026",
+            "HomeTeam": "Toulouse",
+            "AwayTeam": "Le Havre",
+            "FTHG": 3,
+            "FTAG": 2
+        },
+        {
+            "Date": "20/09/2026",
+            "HomeTeam": "Auxerre",
+            "AwayTeam": "Brest",
+            "FTHG": 2,
+            "FTAG": 1
+        },
+        {
+            "Date": "20/09/2026",
+            "HomeTeam": "Nice",
+            "AwayTeam": "Lille",
+            "FTHG": 2,
+            "FTAG": 1
+        },
+        {
+            "Date": "20/09/2026",
+            "HomeTeam": "Marseille",
+            "AwayTeam": "Paris SG",
+            "FTHG": 1,
+            "FTAG": 2
+        }
+    ]
+}

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PitchBoard — Dashboard & Statistiques de Ligue 1</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pitch: { 500: '#0ea5e9', 600: '#0284c7', 950: '#082f49' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-900 min-h-screen flex flex-col pb-12">
+
+   <!-- Header / Navbar -->
+    <header class="border-b border-slate-200 bg-white/90 backdrop-blur sticky top-0 z-50 shadow-xs">
+        <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+            <!-- Logo + Nom du site -->
+            <a href="index.html" class="flex items-center gap-2.5">
+                <img src="logo.webp" alt="PitchBoard Logo" class="h-9 w-auto object-contain">
+                <span class="font-extrabold text-base tracking-tight text-slate-900">Pitch<span class="text-sky-600">Board</span></span>
+            </a>
+            <!-- Navigation complète -->
+            <nav class="flex items-center gap-2">
+                <a href="index.html" class="text-xs font-bold bg-slate-900 text-white px-3 py-1.5 rounded-lg">Accueil</a>
+                <a href="classement.html" class="text-xs font-semibold text-slate-600 px-3 py-1.5 rounded-lg hover:bg-slate-100">Classement</a>
+                <a href="calendar.html" class="text-xs font-semibold text-slate-600 px-3 py-1.5 rounded-lg hover:bg-slate-100">Calendrier</a>
+                <a href="team.html" class="text-xs font-semibold text-slate-600 px-3 py-1.5 rounded-lg hover:bg-slate-100">Équipes</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section Central -->
+    <section class="max-w-5xl mx-auto px-4 pt-10 pb-6 text-center space-y-4">
+        <div class="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 px-3.5 py-1.5 rounded-full text-xs font-bold text-sky-600">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Football Analytics & Data Platform — Saison 2026/2027
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+            Analysez la <span class="text-sky-600">Ligue 1</span> en Temps Réel
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto">
+            Tendances offensives, classements détaillés, dynamiques des clubs et derniers résultats décryptés par la data.
+        </p>
+    </section>
+
+    <!-- Main Content Container -->
+    <main class="max-w-5xl w-full mx-auto px-4 mt-4 flex-1 space-y-6">
+
+        <!-- Grille des Insights Clés -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            
+            <!-- Carte 1 : Leader -->
+            <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between text-slate-500 mb-2">
+                        <span class="text-xs font-bold uppercase tracking-wider">Leader</span>
+                        <i data-lucide="crown" class="w-4 h-4 text-amber-500"></i>
+                    </div>
+                    <div id="cardLeader" class="text-xl font-extrabold text-slate-900 tracking-tight">Chargement...</div>
+                </div>
+                <div id="cardLeaderStats" class="text-xs text-sky-600 mt-4 font-semibold">- Points</div>
+            </div>
+
+            <!-- Carte 2 : Meilleure Attaque -->
+            <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between text-slate-500 mb-2">
+                        <span class="text-xs font-bold uppercase tracking-wider">Meilleure Attaque</span>
+                        <i data-lucide="zap" class="w-4 h-4 text-sky-600"></i>
+                    </div>
+                    <div id="cardAttack" class="text-xl font-extrabold text-slate-900 tracking-tight">Chargement...</div>
+                </div>
+                <div id="cardAttackGoals" class="text-xs text-slate-500 mt-4 font-semibold">- buts inscrits</div>
+            </div>
+
+            <!-- Carte 3 : Domination (Tirs cadrés) -->
+            <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between text-slate-500 mb-2">
+                        <span class="text-xs font-bold uppercase tracking-wider">Tirs Cadrés</span>
+                        <i data-lucide="target" class="w-4 h-4 text-blue-600"></i>
+                    </div>
+                    <div id="cardShooter" class="text-xl font-extrabold text-slate-900 tracking-tight">Chargement...</div>
+                </div>
+                <div id="cardShooterStats" class="text-xs text-blue-600 mt-4 font-semibold">- tirs cadrés</div>
+            </div>
+
+            <!-- Carte 4 : Meilleur Buteur (API) -->
+            <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between text-slate-500 mb-2">
+                        <span class="text-xs font-bold uppercase tracking-wider">Meilleur Buteur</span>
+                        <i data-lucide="award" class="w-4 h-4 text-sky-600"></i>
+                    </div>
+                    <div id="cardTopScorerName" class="text-base font-extrabold text-slate-900 tracking-tight truncate">Chargement...</div>
+                    <div id="cardTopScorerTeam" class="text-xs text-slate-500 truncate mt-0.5">-</div>
+                </div>
+                <div id="cardTopScorerGoals" class="text-xs text-sky-600 mt-4 font-semibold">- buts</div>
+            </div>
+
+        </div>
+
+        <!-- Section Prochaine Journée -->
+        <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm mt-8">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-4">
+                <h3 id="nextMatchdayTitle" class="font-bold text-sm text-sky-600 flex items-center gap-2">
+                    <i data-lucide="calendar" class="w-4 h-4"></i> Prochaine Journée
+                </h3>
+                <span class="text-[10px] bg-sky-50 text-sky-600 px-2.5 py-1 rounded-full font-bold border border-sky-100">À venir</span>
+            </div>
+            
+            <div id="nextMatchesContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
+                <p class="text-slate-400 italic col-span-full">Chargement de la prochaine journée...</p>
+            </div>
+        </div>
+
+        <!-- Section Derniers Résultats -->
+        <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm mt-8">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-4">
+                <h3 class="font-bold text-sm text-sky-600 flex items-center gap-2">
+                    <i data-lucide="history" class="w-4 h-4"></i> Derniers Résultats (Dernière Journée)
+                </h3>
+                <span class="text-[10px] bg-sky-50 text-sky-600 px-2.5 py-1 rounded-full font-bold border border-sky-100">Matchs joués</span>
+            </div>
+            
+            <div id="recentMatchesContainer" class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                <p class="text-slate-400 italic col-span-full">Chargement des derniers résultats...</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white py-8 text-center text-xs text-slate-400 mt-16">
+        <p class="font-bold text-slate-600 mb-1">PitchBoard — Football Analytics</p>
+        <p>© 2026 PitchBoard. Tous droits réservés.</p>
+    </footer>
+
+    <!-- Moteur JS -->
+    <script>
+        lucide.createIcons();
+
+        const API_KEY = 'e69838debdd944ce98f16a61295e0305'; // Remplace par ta clé API football-data.org
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadDashboard();
+            loadTopScorer();
+            loadNextMatchday();
+        });
+
+        // Chargement du dashboard local (stats_ligue1.json)
+        async function loadDashboard() {
+            try {
+                const response = await fetch('stats_ligue1.json');
+                if (!response.ok) throw new Error('Fichier introuvable');
+                
+                const data = await response.json();
+                const standings = data.standings;
+                const recentMatches = data.recent_matches;
+                
+                if (standings && standings.length > 0) {
+                    document.getElementById('cardLeader').innerText = standings[0].Team;
+                    document.getElementById('cardLeaderStats').innerText = `${standings[0].Points} Points (${standings[0].Matches} matchs)`;
+
+                    let bestAttack = [...standings].sort((a, b) => b.ButsPour - a.ButsPour)[0];
+                    document.getElementById('cardAttack').innerText = bestAttack.Team;
+                    document.getElementById('cardAttackGoals').innerText = `${bestAttack.ButsPour} buts inscrits`;
+
+                    let bestShooter = [...standings].sort((a, b) => b.TirsCadres - a.TirsCadres)[0];
+                    document.getElementById('cardShooter').innerText = bestShooter.Team;
+                    document.getElementById('cardShooterStats').innerText = `${bestShooter.TirsCadres} tirs cadrés`;
+                }
+
+                const matchesContainer = document.getElementById('recentMatchesContainer');
+                if (recentMatches && recentMatches.length > 0) {
+                    matchesContainer.innerHTML = '';
+                    recentMatches.forEach(match => {
+                        const div = document.createElement('div');
+                        div.className = "bg-slate-50 border border-slate-200 p-3 rounded-xl flex items-center justify-between";
+                        div.innerHTML = `
+                            <span class="font-bold text-slate-800 w-1/3 truncate" title="${match.HomeTeam}">${match.HomeTeam}</span>
+                            <span class="bg-white text-sky-600 font-extrabold px-2.5 py-1 rounded-lg text-xs tracking-widest border border-slate-200 shadow-xs">${match.FTHG} - ${match.FTAG}</span>
+                            <span class="font-bold text-slate-800 w-1/3 text-right truncate" title="${match.AwayTeam}">${match.AwayTeam}</span>
+                        `;
+                        matchesContainer.appendChild(div);
+                    });
+                } else {
+                    matchesContainer.innerHTML = `<p class="text-slate-400 italic">Aucun résultat récent trouvé.</p>`;
+                }
+
+            } catch (error) {
+                console.error("Erreur de chargement :", error);
+                document.getElementById('recentMatchesContainer').innerHTML = `
+                    <p class="text-amber-600 text-xs col-span-full">⚠️ Fichier <b>stats_ligue1.json</b> manquant. Pense à le placer dans ton dossier web !</p>
+                `;
+            }
+        }
+
+        // Chargement du meilleur buteur depuis l'API
+        async function loadTopScorer() {
+            try {
+                const response = await fetch('https://api.football-data.org/v4/competitions/FL1/scorers', {
+                    headers: { 'X-Auth-Token': API_KEY }
+                });
+                if (!response.ok) throw new Error("Erreur chargement buteurs");
+
+                const data = await response.json();
+                
+                if (data.scorers && data.scorers.length > 0) {
+                    const topScorer = data.scorers[0];
+                    document.getElementById('cardTopScorerName').innerText = topScorer.player.name;
+                    document.getElementById('cardTopScorerTeam').innerText = topScorer.team.name;
+                    document.getElementById('cardTopScorerGoals').innerText = `${topScorer.goals} buts ${topScorer.assists ? '• ' + topScorer.assists + ' passes' : ''}`;
+                } else {
+                    document.getElementById('cardTopScorerName').innerText = "Non disponible";
+                    document.getElementById('cardTopScorerTeam').innerText = "Saison en cours";
+                    document.getElementById('cardTopScorerGoals').innerText = "0 but";
+                }
+            } catch (error) {
+                console.error("Erreur API Buteurs :", error);
+                document.getElementById('cardTopScorerName').innerText = "Erreur chargement";
+                document.getElementById('cardTopScorerTeam').innerText = "Vérifie ta clé API";
+                document.getElementById('cardTopScorerGoals').innerText = "-";
+            }
+        }
+
+        // Chargement de la prochaine journée depuis l'API
+        async function loadNextMatchday() {
+            try {
+                const response = await fetch('https://api.football-data.org/v4/competitions/FL1/matches', {
+                    headers: { 'X-Auth-Token': API_KEY }
+                });
+                if (!response.ok) throw new Error("Erreur chargement calendrier");
+
+                const data = await response.json();
+                const matches = data.matches;
+
+                const nextMatch = matches.find(m => m.status === 'TIMED' || m.status === 'SCHEDULED');
+                
+                if (!nextMatch) {
+                    document.getElementById('nextMatchesContainer').innerHTML = `<p class="text-slate-400 italic col-span-full">Aucun match à venir trouvé.</p>`;
+                    return;
+                }
+
+                const targetMatchday = nextMatch.matchday;
+                document.getElementById('nextMatchdayTitle').innerHTML = `<i data-lucide="calendar" class="w-4 h-4"></i> Prochaine Journée (Journée ${targetMatchday})`;
+
+                const dayMatches = matches.filter(m => m.matchday === targetMatchday);
+
+                const container = document.getElementById('nextMatchesContainer');
+                container.innerHTML = '';
+
+                dayMatches.forEach(match => {
+                    const matchDate = new Date(match.utcDate);
+                    const options = { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' };
+                    const formattedDate = matchDate.toLocaleDateString('fr-FR', options);
+
+                    const div = document.createElement('div');
+                    div.className = "bg-slate-50 border border-slate-200 p-3 rounded-xl flex flex-col justify-between space-y-2";
+                    div.innerHTML = `
+                        <div class="text-[10px] text-slate-400 font-semibold flex items-center justify-between">
+                            <span>${formattedDate}</span>
+                            <span class="text-sky-600 font-bold">VS</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2 w-5/12 truncate">
+                                <img src="${match.homeTeam.crest || ''}" alt="" class="w-5 h-5 object-contain shrink-0">
+                                <span class="font-bold text-slate-800 truncate">${match.homeTeam.name}</span>
+                            </div>
+                            <span class="text-slate-400 font-bold text-[10px]">-</span>
+                            <div class="flex items-center gap-2 w-5/12 justify-end truncate">
+                                <span class="font-bold text-slate-800 truncate text-right">${match.awayTeam.name}</span>
+                                <img src="${match.awayTeam.crest || ''}" alt="" class="w-5 h-5 object-contain shrink-0">
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(div);
+                });
+
+                lucide.createIcons();
+
+            } catch (error) {
+                console.error("Erreur Prochaine Journée :", error);
+                document.getElementById('nextMatchesContainer').innerHTML = `<p class="text-amber-600 text-xs col-span-full">⚠️ Impossible de charger la prochaine journée.</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
