@@ -206,15 +206,15 @@
             } catch (error) {
                 console.error("Erreur de chargement :", error);
                 document.getElementById('recentMatchesContainer').innerHTML = `
-                    <p class="text-amber-600 text-xs col-span-full">⚠️ Fichier <b>stats_ligue1.json</b> manquant. Pense à le placer dans ton dossier web !</p>
+                    <p class="text-amber-600 text-xs col-span-full">⚠️ Fichier <b>stats_ligue1.json</b> manquant ou bloqué (lance VS Code avec <b>Live Server</b>).</p>
                 `;
             }
         }
 
-        // Chargement du meilleur buteur depuis l'API via AllOrigins
+        // Chargement du meilleur buteur avec la clé dans l'URL
         async function loadTopScorer() {
             try {
-                const apiUrl = 'https://api.football-data.org/v4/competitions/FL1/scorers';
+                const apiUrl = `https://api.football-data.org/v4/competitions/FL1/scorers?authToken=${API_KEY}`;
                 const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(apiUrl)}`;
                 
                 const response = await fetch(proxyUrl);
@@ -235,16 +235,16 @@
                 }
             } catch (error) {
                 console.error("Erreur API Buteurs :", error);
-                document.getElementById('cardTopScorerName').innerText = "Erreur chargement";
-                document.getElementById('cardTopScorerTeam').innerText = "Vérifie ta console";
+                document.getElementById('cardTopScorerName').innerText = "Erreur de chargement";
+                document.getElementById('cardTopScorerTeam').innerText = "Vérifie la console";
                 document.getElementById('cardTopScorerGoals').innerText = "-";
             }
         }
 
-        // Chargement de la prochaine journée depuis l'API via AllOrigins
+        // Chargement de la prochaine journée avec la clé dans l'URL
         async function loadNextMatchday() {
             try {
-                const apiUrl = 'https://api.football-data.org/v4/competitions/FL1/matches';
+                const apiUrl = `https://api.football-data.org/v4/competitions/FL1/matches?authToken=${API_KEY}`;
                 const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(apiUrl)}`;
                 
                 const response = await fetch(proxyUrl);
