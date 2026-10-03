@@ -215,7 +215,7 @@
         async function loadTopScorer() {
             try {
                 const apiUrl = 'https://api.football-data.org/v4/competitions/FL1/scorers';
-                const response = await fetch('https://corsproxy.io/?' + encodeURIComponent(apiUrl), {
+                const response = await fetch('https://corsproxy.io/?url=' + encodeURIComponent(apiUrl), {
                     headers: { 'X-Auth-Token': API_KEY }
                 });
                 if (!response.ok) throw new Error("Erreur chargement buteurs");
@@ -244,7 +244,7 @@
         async function loadNextMatchday() {
             try {
                 const apiUrl = 'https://api.football-data.org/v4/competitions/FL1/matches';
-                const response = await fetch('https://corsproxy.io/?' + encodeURIComponent(apiUrl), {
+                const response = await fetch('https://corsproxy.io/?url=' + encodeURIComponent(apiUrl), {
                     headers: { 'X-Auth-Token': API_KEY }
                 });
                 if (!response.ok) throw new Error("Erreur chargement calendrier");
